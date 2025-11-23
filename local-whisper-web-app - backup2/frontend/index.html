@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Whisper Transcriber</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Local Whisper Transcriber</h1>
+        </header>
+
+        <main>
+            <div class="left-panel">
+                <div id="drop-zone" class="drop-zone">
+                    <div class="video-section">
+                        <div class="video-wrapper">
+                            <video id="main-video" controls></video>
+                            <div id="upload-prompt" class="upload-prompt">
+                                <p>Drag & Drop Video Here</p>
+                                <p class="sub-text">or click to browse</p>
+                                <input type="file" id="video-upload" accept="video/*">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="controls-container">
+                    <div class="control-group">
+                        <label for="backend-select">Backend:</label>
+                        <select id="backend-select">
+                            <option value="server">Python Server (Local)</option>
+                            <option value="webgpu">WebGPU (Browser)</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="model-select">Model:</label>
+                        <select id="model-select">
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+
+                    <button id="transcribe-btn" disabled>Transcribe</button>
+
+                    <div id="progress-container" class="hidden">
+                        <div class="progress-bar">
+                            <div id="progress-fill"></div>
+                        </div>
+                        <span id="progress-text">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="transcript-section">
+                <div class="transcript-header">
+                    <h2>Transcript</h2>
+                    <button id="save-btn" disabled>Save Transcript</button>
+                </div>
+                <div id="transcript-output" class="transcript-content">
+                    <p class="placeholder-text">Upload a video and press Transcribe to see text here.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="loading-overlay" class="hidden">
+        <div class="spinner"></div>
+        <p id="loading-text">Processing...</p>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

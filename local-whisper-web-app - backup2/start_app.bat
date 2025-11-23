@@ -1,0 +1,9 @@
+@echo off
+echo Starting Local Whisper Web App...
+cd backend
+echo Installing requirements...
+pip install -r requirements.txt
+echo Starting Server...
+start "" "http://127.0.0.1:8000"
+python server.py
+pause
